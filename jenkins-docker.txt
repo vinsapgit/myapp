@@ -8,15 +8,6 @@ pipeline {
                 }
         }
 	    }
-        stage('Two') {
-                when {
-                        not {
-                                branch "main"
-                        }
-                }
-                steps {
-			echo "Hello"
-                        }
         }
         stage('Four') {
                 parallel {
