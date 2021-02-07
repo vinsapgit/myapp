@@ -33,8 +33,7 @@ pipeline {
                         stage('Integration test') {
                         agent {
                                 docker {
-                                        reuseNode true
-					image 'ubuntu'
+                                        image 'bhavindocker/myapp:ver1'
                                         }
 			}
 				steps {
