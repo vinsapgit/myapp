@@ -3,26 +3,46 @@ pipeline {
     stages {
         stage('One') {
                 steps {
-                        echo 'Hi, this is Bhavin from DevOps'
+                        echo 'Hi, this is Puneet from DevOps'
 			
                 }
         }
+	    stage('Two'){
+		    
+		steps {
+			input('Do you want to proceed?')
+        }
 	    }
+        stage('Three') {
+                when {
+                        not {
+                                branch "master"
+                        }
+                }
+                steps {
+			echo "Hello"
+                        }
         }
         stage('Four') {
                 parallel {
-                        stage('Pulling Docker Image') {
+                        stage('Unit Test') {
+                                steps{
+                                        echo "Running the unit test..."
+                                }
+                        }
+                        stage('Integration test') {
                         agent {
                                 docker {
                                         reuseNode true
-					image 'bhavindocker/myapp:ver1'
+					image 'ubuntu'
                                         }
 			}
 				steps {
-					echo 'Getting Docker image'
+					echo 'Running the integration test..'
 				}
                                
 			}  }
         }
     }
 }
+© 2021 GitHub, Inc.
