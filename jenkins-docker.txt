@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('One') {
                 steps {
-                        echo 'Hi, this is Puneet from DevOps'
+                        echo 'Hi, this is Bhavin from DevOps'
 			
                 }
         }
@@ -20,24 +20,24 @@ pipeline {
                         }
                 }
                 steps {
-			echo "Hello"
+			echo "Hello Everyone"
                         }
         }
         stage('Four') {
                 parallel {
-                        stage('Unit Test') {
+                        stage('Prepare Image') {
                                 steps{
-                                        echo "Running the unit test..."
+                                        echo "Preparing Image..."
                                 }
                         }
-                        stage('Integration test') {
+                        stage('Getting docker image') {
                         agent {
                                 docker {
                                         image 'bhavindocker/myapp:ver1'
                                         }
 			}
 				steps {
-					echo 'Running the integration test..'
+					echo 'Image pulled.'
 				}
                                
 			}  }
